@@ -1,0 +1,84 @@
+ Technical Task :- 
+
+Selenium :-
+
+1. Methods to switch between windows (source code avilable at -> /TechnicalTask/src/task/two/MultipleWindows.java)
+
+	// method to switch to window by index using list
+	public static void switchByIndex(int index){
+		Set<String> set = driver.getWindowHandles();
+		List<String> l = new LinkedList<String>(set);
+		driver.switchTo().window(l.get(index));
+	}
+	// method to switch to window by page title using for each loop
+	public static void SwitchByTitle(String title){
+		Set<String> set = driver.getWindowHandles();
+	for (String string : set) {
+		if (driver.switchTo().window(string).getTitle()==title) {
+			break;
+		}
+	 }
+	 }
+
+2. Cross browser testing  (source code avilable at -> /TechnicalTask/src/task/two/CrossBrowserTesting.java)
+   The bellow code will open amazon in four browser.
+
+   public static WebDriver launch (String browser){
+	WebDriver driver = null;
+	// i'm using selenium 4.8.0 so there is no need to set system.setProperties() or WebdriverManager
+	if (browser.equalsIgnoreCase("Chrome")) {
+	/	driver = new ChromeDriver();
+	}
+	else if (browser.equalsIgnoreCase("FireFox")) {
+		driver = new FirefoxDriver();
+	}
+    else if (browser.equalsIgnoreCase("Edge")) {
+		driver = new EdgeDriver();
+	}
+    else if (browser.equalsIgnoreCase("InternetExplorerDriver")) {
+		driver = new InternetExplorerDriver();
+	}
+	return driver;
+        }
+        public static String[] s = {"Chrome","Edge","FireFox","InternetExplorerDriver"};
+        public static WebDriver driver;
+        public static void main(String[] args) {
+	  for (int i = 0; i <s.length; i++) {
+		driver = launch(s[i]);
+		driver.get("https://www.amazon.in/");
+	   }
+        }
+3. Mehods to Switch handle frame (source code avilable at -> /TechnicalTask/src/task/two/FrameHandling.java)
+
+    public static void switchToFrame (Object o, String by){
+	if (by.equalsIgnoreCase("id")) {
+		driver.switchTo().frame((String)o);
+	}
+	if (by.equalsIgnoreCase("name")) {
+		driver.switchTo().frame((String)o);
+	}
+	if (by.equalsIgnoreCase("index")) {
+		driver.switchTo().frame((int)o);
+	
+       if (by.equalsIgnoreCase("WebElement")) {
+		driver.switchTo().frame((WebElement)o);	
+	}
+    }
+   public static void switchToDefult (){
+	driver.switchTo().defaultContent();
+   }
+   
+4. Method for taking Screenshot (source code avilable at -> /TechnicalTask/src/task/two/TakeSS.java)
+
+	public static void takeScreenShot(String path){
+		TakesScreenshot tk = (TakesScreenshot)driver;
+		File file = tk.getScreenshotAs(OutputType.FILE);
+		File des = new File(path);
+		try {
+			FileUtils.copyFile(file, des);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+5. We find more than one Element with findElements() method from WebDriver which returns all the elements found by specific locater as List<WebElement>.
+   it returns an empty list when no elements are found by the given locater and does not throw any exceptions.

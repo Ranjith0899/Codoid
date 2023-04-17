@@ -1,0 +1,165 @@
+1. Reporting bug in whatsapp video sharing 
+
+ Title: Inability to Send Video Files in Group Chats in Whatsapp Mobile Application
+  Module no : GroupChat0901
+
+ Summary:
+  Users are unable to send video files in group chats in the Whatsapp mobile application. This issue is not present in private chats, where the workflow is 
+  functioning normally. The bug prevents users from sharing videos with multiple recipients in group chats, limiting their ability to communicate effectively and
+  share media content.
+
+ Steps to Reproduce:
+
+  Open the Whatsapp mobile application on a compatible device.
+  Navigate to a group chat by selecting the group from the chat list.
+  Tap on the attachment icon to access the media options.
+  Choose the "Gallery" or "Camera" option to select or capture a video file.
+  Select a video file from the gallery or capture a new video.
+  Tap on the send button to share the video in the group chat.
+
+
+ Expected Result:
+  The video file should be sent and shared in the group chat, visible to all group members, just like in private chats.
+
+ Actual Result:
+  After selecting or capturing a video file, and tapping on the send button, the video fails to send and does not appear in the group chat. 
+  There is no error message displayed, and the video is not visible to other group members.
+
+ Priority : High
+
+ Severity : High
+
+ Environment:
+
+  Device: PocoM2pro
+  Operating System: Android 12
+  Whatsapp Mobile Application Version: 2.23.6.76 
+  Network Connection: Wi-Fi
+
+
+2. Negative Test Cases
+
+ 1.Test Case: Invalid Login Credentials
+ Test Steps:
+ 
+  Navigate to the Amazon login page.
+
+  Enter an invalid username and password combination in the respective fields.
+
+  Click on the "Sign In" button.
+
+  Verify that an error message is displayed indicating that the login credentials are incorrect.
+
+ 2.Test Case: Non-existent Product Search
+ Test Steps:
+
+  Navigate to the Amazon website.
+
+  Enter "abcdefgh" in the search bar.
+ 
+  Click on the "Search" button.
+
+  Verify that a message is displayed indicating that no results were found for the search query.
+
+ 3.Test Case: Invalid Quantity for Adding to Cart
+ Test Steps:
+
+  Navigate to the product details page of a product on Amazon.
+
+  Enter a negative quantity or zero in the quantity field.
+
+  Click on the "Add to Cart" button.
+
+  Verify that an error message is displayed indicating that the quantity entered is invalid.
+
+ 4.Test Case: Insufficient Payment Information for Placing an Order
+ Test Steps:
+
+  Navigate to the checkout page on Amazon.
+
+  Proceed to the payment information section without entering any payment details.
+
+  Click on the "Place your order" button.
+
+  Verify that an error message is displayed indicating that payment information is required to place the order.
+
+ 5.Test Case: Update Account Settings with Invalid Email Format
+ Test Steps:
+
+  Navigate to the account settings page on Amazon.
+
+  Enter an invalid email address format in the email field.
+
+  Click on the "Save Changes" button.
+
+  Verify that an error message is displayed indicating that the email address entered is not in a valid format.
+
+3. Ten Test cases for amazon in Gherkin language
+
+ 1.Scenario: Login to Amazon
+  Given that I am on the Amazon website
+  When I click on the "Sign In" button
+  Then I should be taken to the login page
+  And I enter my valid username and password
+  And I click on the "Sign In" button
+  Then I should be successfully logged in to my Amazon account
+
+ 2.Scenario: Search for a Product
+  Given that I am logged in to Amazon
+  When I type "headphones" in the search bar
+  And I click on the "Search" button
+  Then I should see a list of products related to "headphones" displayed
+
+ 3.Scenario: Add Product to Cart
+  Given that I am on the product details page of a headphone
+  And I have selected my desired color and quantity
+  When I click on the "Add to Cart" button
+  Then the headphone should be added to my cart
+  And the cart count should be updated accordingly
+
+ 4.Scenario: View Cart
+  Given that I have added a product to my cart
+  When I click on the "Cart" button
+  Then I should be taken to the cart page
+  And I should be able to view the product in my cart
+
+ 5.Scenario: Proceed to Checkout
+  Given that I have added a product to my cart
+  And I am on the cart page
+  When I click on the "Proceed to Checkout" button
+  Then I should be taken to the checkout page
+  And my cart items should be displayed for review
+
+ 6.Scenario: Place Order
+  Given that I am on the checkout page
+  And I have entered the required shipping and payment details
+  When I click on the "Place your order" button
+  Then my order should be successfully placed
+  And I should receive an order confirmation message
+
+ 7.Scenario: View Order History
+  Given that I have previously placed an order
+  When I click on the "Orders" tab
+  Then I should be able to view my order history page
+  And I should see my most recent order listed in the order history
+
+ 8.Scenario: Update Account Settings
+  Given that I am logged in to my Amazon account
+  When I click on the "Account & Lists" button
+  And I select "Account settings"
+  Then I should be directed to the account settings page
+  And I should be able to update my account information, such as name, email, and password
+
+ 9.Scenario: Add Product to Wishlist
+  Given that I am on the product details page of a product
+  When I click on the "Add to Wishlist" button
+  Then the product should be added to my wishlist
+  And I should receive a confirmation message
+
+ 10.Scenario: Contact Customer Support
+  Given that I am logged in to my Amazon account
+  When I click on the "Help" or "Customer Service" link
+  Then I should be directed to the customer support page
+  And I should be able to select a help topic or contact option
+  And I should be able to submit a request or query
+  Then I should receive a confirmation or reference number

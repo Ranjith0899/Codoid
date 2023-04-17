@@ -1,0 +1,205 @@
+ Technical Task :-
+ Java:-
+
+1.  CustomExceptions  (source code avilable at -> /TechnicalTask/src/task/one/CustomExceptions.java)
+
+  public class CustomExceptions extends Exception {
+
+	//custom exception for throwing exception if age is less than 18
+	public CustomExceptions(int age){
+		if (age<=18) {
+		System.err.println("Age Requirement does not meet");
+		System.exit(0);
+	    }
+		else{ System.out.println("You are eligable for Voting");
+		}
+	}	
+	// scanner to get age data from user
+	public static Scanner s = new Scanner(System.in);
+    public static void main (String[] args ) throws CustomExceptions {
+    	// To Indicate user to enter his age
+    	System.out.println("Enter Your age");
+    	int i = s.nextInt();
+	throw new CustomExceptions(i);
+    	
+	
+    }
+}
+
+
+
+2. For Reversing string we can use loop, StringBuilder or StringBuffer.
+  ( source code avilable at -> /TechnicalTask/src/task/one/ReverseString.java)
+
+   	public static void main(String[] args) {
+	  // Using loop
+	 String s = "ranjith";
+	 System.out.println("Actual String : "+ s);
+	 String rev = "";
+	   // reversing the String
+	   for(int i = s.length()-1; i>=0; i--){
+	     rev = rev +  Character.toString(s.charAt(i));
+	   }
+	   // assigning the reversed string to actual string
+	   s = rev;
+	   System.out.println("String after using loop to reverse : "+s);
+
+	 // Using StringBuilder
+	  String word = "hello";
+	  System.out.println("Actual String : "+ word);
+	  // using reverse method from StringBuilder
+	  StringBuilder sb = new StringBuilder(word);
+	  word =  sb.reverse().toString();
+	   System.out.println("String after using reverse method from StringBuilder : "+word);
+
+	 
+	 //  similarly by StringBuffer
+	  String st = "hola";
+	  System.out.println("Actual String : "+ st);
+
+	  StringBuffer sbf = new StringBuffer(st);
+	 st = sbf.reverse().toString();
+	   System.out.println("String after using reverse method from StringBuffer : "+st);
+
+}
+
+
+3. Program to detect duplicate Charater in String
+(source code avilable at -> /TechnicalTask/src/task/one/DuplicateFinder.java)
+
+     public static void main(String[] args){
+	String s = "Array";
+       // Converting string to lower case
+       s.toLowerCase();
+       // Spiting string into character array
+	char[] split = s.toCharArray();
+       // map for storing storing char and its number of duplicates in key and value pair
+	Map< Character, Integer> m = new LinkedHashMap<Character, Integer>();
+       // for each loop to iterate char[]
+       for (char c : split) {
+       if(c ==' '){ continue;}
+       //checking whether the char already had a entry in the map and adding +1 if it has an entry with put method
+	else if (m.containsKey(c)) {
+	m.put(c, m.get(c)+1);}
+       // else adding into map with put method with number of duplicate as 1
+	else {
+	m.put(c, 1);}
+       }
+      // for printing charter which occurs more than one time
+      Set<Entry< Character, Integer>> entrySet = m.entrySet();
+      for (Entry< Character, Integer> entry : entrySet) {
+      if (entry.getValue()>1) {
+      System.out.println(entry.getKey() + " is duplicated and occurs " +entry.getValue()+" times");
+      }
+      }}
+
+4. The bellow Method can remove duplicates from ArrayList. (source code avilable at -> /TechnicalTask/src/task/one/DuplicateRemover.java )
+
+   we just have to pass an ArrayList into to this method and the method will return an array list with all dulicates values removed.
+
+  public static <T> void removeDuplicates(ArrayList<T> list) {
+	        LinkedHashSet<T> unique = new LinkedHashSet<>(list);
+	        list.clear();
+	        list.addAll(unique);
+	    }
+
+5.   Infinite loop in java (source code avilable at -> /TechnicalTask/src/task/one/InfiniteLoop.java)
+
+    1. for(;;){}
+    2. while(true){}
+    3. do {}
+       while(true);
+
+    example :
+            The bellow loop can print from 0 to infinite.
+
+           for (int i = 0;; i++) {
+		System.out.println(i);
+	   }
+
+6. Example for method overloading  (source code avilable at -> /TechnicalTask/src/task/one/ MethodOverloading.java)
+
+  Bellow we have methods with same name but with diffrent parametrs.
+
+           public static void print(String s){
+  	   System.out.println(s);
+         }
+	   public static void print(int i){
+  	   System.out.println(i);
+         }
+	   public static void print(String[] sa ){
+		  for (int i = 0; i < sa.length; i++) {
+			System.out.println(sa[i]);
+	          } 
+	   }
+	   public static void print(int[] ia ){
+	          for (int i = 0; i < ia.length; i++) {
+				System.out.println(ia[i]);
+		  }
+	   }
+	   public static <T> void print(List<T> l ){
+	           for (int i = 0; i < l.size(); i++) {
+		        System.out.println(l.get(i));
+		   }
+         }
+  
+7. Methodoverloadimg with number of arrguments  (source code avilable at -> /TechnicalTask/src/task/one/MethodOverloading_Arg.java)
+   public static int add (int a, int b){
+		    return a+b; 
+		  }
+		  public static int add (int a, int b, int c){
+		    return a+b+c; 
+		  }
+		  public static int add (int a, int b,int c, int d){
+		    return a+b+c+d; 
+		  }
+
+8. Reading file in java  (source code avilable at -> /TechnicalTask/src/task/one/File_Reader.java)
+ String file_Name = "C:\\Users\\ELCOT\\Desktop\\New Text Document.txt";  // Replace with the path of your file
+
+	        try {
+	            // FileReader object to read a file
+	            FileReader file_Reader = new FileReader(file_Name);
+
+	            // BufferedReader object to read line by line
+	            BufferedReader buffered_Reader = new BufferedReader(file_Reader);
+
+	            String line;
+	            while ((line = buffered_Reader.readLine()) != null) {
+	                System.out.println(line); // Print each line to console
+	            }
+
+	            // Closing the BufferedReader and FileReader
+	            buffered_Reader.close();
+	            file_Reader.close();
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+9. getName() in java (source code avilable at -> /TechnicalTask/src/task/one/File_Reader.java)
+   The getName() method is a from the java.io.File class, which is used to retrieve the name of a file .
+
+  File f = new File ("C:\\Users\\ELCOT\\Desktop\\New Text Document.txt");
+  String name = f.getName();
+  
+  the above String  name will have the value "New Text Document.txt"
+
+10. program to genrate  (source code avilable at -> /TechnicalTask/src/task/one/Print.java)
+*
+**
+****
+*****
+******
+
+ public static void main(String[] args) {
+	for (int i = 1; i <=5; i++) {
+	if (i==3) {
+		continue;
+	}	
+	else {
+		for (int j = 0; j<i; j++) {
+			System.out.print('*');
+		}
+		System.out.println();
+	}
+	}
+        
