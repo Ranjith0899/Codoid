@@ -1,4 +1,4 @@
-1. Reporting bug in whatsapp video sharing 
+1. Reporting bug in whatsapp video sharing (attached bug report snap from jira with name Bug report.png)
 
  Title: Inability to Send Video Files in Group Chats in Whatsapp Mobile Application
   Module no : GroupChat0901
