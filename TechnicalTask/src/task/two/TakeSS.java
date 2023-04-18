@@ -14,9 +14,9 @@ public class TakeSS {
 	public static void takeScreenShot(String path){
 		TakesScreenshot tk = (TakesScreenshot)driver;
 		File file = tk.getScreenshotAs(OutputType.FILE);
-		File des = new File(path);
+		
 		try {
-			FileUtils.copyFile(file, des);
+			FileUtils.copyFile(file, new File(path));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -25,7 +25,7 @@ public class TakeSS {
 		driver = new ChromeDriver();
 		driver.get("https://google.com");
 		driver.manage().window().maximize();
-		takeScreenShot("C:\\Users\\ELCOT\\workspace\\TechnicalTask\\Snaps\\snap.img");
+		takeScreenShot("C:\\Users\\ELCOT\\workspace\\TechnicalTask\\Snaps\\snap.png");
 	}
 
 }
